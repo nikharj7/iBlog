@@ -9,7 +9,7 @@ def blogHome(request):
     allPosts = Post.objects.all().order_by("-timeStamp")
     context = {'allPosts' : allPosts}
     messages.success(request, "Your can submit your posts through contact us form.")
-    return render(request, 'blog/BlogHome.html', context)
+    return render(request, 'BlogHome.html', context)
 
 
 def blogPost(request, slug):
@@ -26,7 +26,7 @@ def blogPost(request, slug):
         else:
             replyDict[reply.parent.sno].append(reply)
     context = {'post': post, 'comments': comments, 'user': request.user,  'replyDict': replyDict}
-    return render(request, 'blog/BlogPost.html', context)
+    return render(request, 'BlogPost.html', context)
 
 def postComment(request):
     if request.method =="POST":
