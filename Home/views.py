@@ -11,10 +11,10 @@ def home(request):
     
     allPosts = Post.objects.all().order_by("-timeStamp")[0:3]
     context = {'allPosts' : allPosts}
-    return render(request, 'home/home.html', context)
+    return render(request, 'home.html', context)
 
 # def about(request):
-#     return render(request, 'home/about.html')
+#     return render(request, 'about.html')
 
 def contact(request):
     if request.method=="POST":
@@ -29,7 +29,7 @@ def contact(request):
             contact.save()
             messages.success(request, "Your message has been sent! Thank you for contacting us.....")
         
-    return render(request, 'home/contact.html')
+    return render(request, 'contact.html')
 
 
 
@@ -46,7 +46,7 @@ def search(request):
     if allPosts.count() == 0:
         messages.warning(request, "No search results. Please refine your query.")
     params = {'allPosts': allPosts, 'query':query}
-    return render(request, 'home/search.html', params)
+    return render(request, 'search.html', params)
 
 
 # Authentication APIs
